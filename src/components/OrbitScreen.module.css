@@ -1,0 +1,74 @@
+.app {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: var(--layout-rail-width) minmax(0, 1fr) var(--layout-detail-width);
+  grid-template-rows: var(--layout-header-height) minmax(0, 1fr);
+}
+
+.rail,
+.detail {
+  background: var(--color-surface);
+  overflow-y: auto;
+  padding: var(--space-4);
+}
+
+.rail {
+  border-right: 1px solid var(--color-border);
+}
+
+.detail {
+  border-left: 1px solid var(--color-border);
+}
+
+.stage {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+}
+
+/*
+ * The drag handles sit on the panel edges rather than inside the panels: a
+ * child of a panel would scroll away with its content. They are centred on
+ * the edge, so half of the handle overlaps each side of it.
+ */
+.railHandle,
+.detailHandle {
+  top: var(--layout-header-height);
+  bottom: 0;
+}
+
+.railHandle {
+  left: var(--layout-rail-width);
+  transform: translateX(-50%);
+}
+
+.detailHandle {
+  right: var(--layout-detail-width);
+  transform: translateX(50%);
+}
+
+/*
+ * Below the width the three columns need, they stack instead. Keep this number
+ * and `MIN_WINDOW_WIDTH` in `config/defaults.ts` the same: that is the width
+ * the narrow-window dialog names, and it is naming this rule.
+ */
+@media (max-width: 959px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--layout-header-height) auto 70vh auto;
+    height: auto;
+  }
+
+  .rail,
+  .detail {
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Stacked: the panels are full width, so there is no edge to drag. */
+  .railHandle,
+  .detailHandle {
+    display: none;
+  }
+}

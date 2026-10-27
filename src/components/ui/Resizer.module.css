@@ -1,0 +1,32 @@
+.resizer {
+  position: absolute;
+  z-index: 2;
+  width: 9px;
+  display: grid;
+  place-items: center;
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.grip {
+  width: 3px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  transition: background var(--duration-fast) ease;
+}
+
+.resizer:hover .grip,
+.resizer:focus-visible .grip,
+.dragging .grip {
+  background: var(--color-accent);
+}
+
+.resizer:focus-visible {
+  outline: none;
+}
+
+/* While a drag is on, the line stays lit down the whole edge. */
+.dragging {
+  background: var(--color-accent-soft);
+}

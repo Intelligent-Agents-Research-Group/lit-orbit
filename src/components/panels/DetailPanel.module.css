@@ -1,0 +1,280 @@
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex: none;
+  background: var(--swatch-colour);
+}
+
+.empty {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
+/* ---- The list: every study, when no setting is on ------------------------ */
+
+.list {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+}
+
+.listRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--color-border-soft);
+  padding: 7px var(--space-1);
+  border-radius: var(--radius-sm);
+}
+
+.listRow:hover {
+  background: var(--color-hover);
+}
+
+.listSwatch {
+  margin-top: 6px;
+}
+
+.listBody {
+  min-width: 0;
+}
+
+.listLabel {
+  display: block;
+  font-size: var(--text-md);
+}
+
+.listMeta {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---- The table: the studies that meet every setting ---------------------- */
+
+/* How much of the batch met the course, and the narrowing that answers it. */
+.tableControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 2px 0 var(--space-2);
+}
+
+.count {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  margin: 0;
+}
+
+/* The table is wider than the panel once a few filters are on, so it scrolls
+   sideways with the study column pinned. */
+.scroller {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: var(--text-xs);
+  width: 100%;
+}
+
+.head {
+  text-align: left;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  vertical-align: bottom;
+  overflow-wrap: anywhere;
+  min-width: 84px;
+}
+
+/* A column the table is currently narrowed by. */
+.headActive {
+  color: var(--color-accent);
+}
+
+.headStudy {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  min-width: 132px;
+}
+
+.headTier,
+.headMatch {
+  min-width: 0;
+  width: 1%;
+  white-space: nowrap;
+}
+
+.tableRow {
+  cursor: pointer;
+}
+
+.tableRow:hover .cell {
+  background: var(--color-hover);
+}
+
+.cell {
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--color-border-soft);
+  background: var(--color-surface);
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  max-width: 22ch;
+  font-weight: var(--weight-normal);
+  text-align: left;
+}
+
+.cellStudy {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  border-right: 1px solid var(--color-border-soft);
+}
+
+.cellTier,
+.cellMatch {
+  text-align: center;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* The studies the orbit rings: every setting met. */
+.cellMatchFull {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+.cellEmpty {
+  color: var(--color-text-faint);
+}
+
+.rowButton {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.rowLabel {
+  min-width: 0;
+}
+
+/* ---- The card: one study, in full --------------------------------------- */
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  margin: var(--space-2) 0 2px;
+}
+
+.cardSwatch {
+  margin-top: 0;
+  width: 10px;
+  height: 10px;
+}
+
+.cardMeta {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: minmax(96px, auto) 1fr;
+  gap: 4px var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.fact {
+  display: contents;
+}
+
+.fact dt {
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.fact dd {
+  overflow-wrap: anywhere;
+}
+
+/* Columns that cannot be filtered on hold free text, so they are set as blocks
+   across the panel rather than squeezed into the value column of the grid. */
+.notes {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.note {
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+}
+
+.note dt {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+  overflow-wrap: anywhere;
+}
+
+.note dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading);
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,56 @@
+.values {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.summary {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* Drawn like a filter pill, but read-only: a value and how often it occurs. */
+.pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  max-width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  padding: 2px 8px;
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.count {
+  color: var(--color-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.more {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  padding: 2px 4px;
+}

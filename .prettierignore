@@ -1,0 +1,8 @@
+# Prettier also skips everything .gitignore lists.
+# Prose, metadata and hand-laid pages keep their own shape.
+*.md
+CITATION.cff
+index.html
+docs
+public
+package-lock.json

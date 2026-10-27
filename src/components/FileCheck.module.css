@@ -1,0 +1,63 @@
+.clean {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.warnings {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* Drawn like a warning Notice, one per finding. */
+.warning {
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-notice-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-notice-bg);
+  color: var(--color-notice-text);
+  padding: 6px 9px;
+}
+
+.columns {
+  font-weight: var(--weight-semibold);
+}
+
+.details {
+  margin-top: var(--space-3);
+}
+
+.summary {
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  user-select: none;
+}
+
+.note {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: var(--space-2) 0;
+}
+
+/* The question the tabs answer, written out so the tabs are not read as naming the box. */
+.question {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  font-weight: var(--weight-medium);
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.hint {
+  font-weight: var(--weight-normal);
+  color: var(--color-text-muted);
+}
+
+/* What the chosen tab's code is like and what to do with it, under the box that asks for it. */
+.afterwards {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: var(--space-2) 0 0;
+}

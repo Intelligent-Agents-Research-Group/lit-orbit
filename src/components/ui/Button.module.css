@@ -1,0 +1,65 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  padding: 6px 10px;
+  transition:
+    background var(--duration-fast),
+    border-color var(--duration-fast),
+    color var(--duration-fast);
+  white-space: nowrap;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--color-hover);
+}
+
+.button:disabled {
+  opacity: var(--opacity-muted);
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-accent);
+  filter: brightness(1.08);
+}
+
+.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-accent);
+  padding-inline: var(--space-1);
+}
+
+.danger {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-danger);
+  padding-inline: var(--space-1);
+}
+
+.sm {
+  font-size: var(--text-xs);
+  padding: 3px 7px;
+}
+
+/* The landing page's calls to action. */
+.lg {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  padding: 11px 20px;
+  border-radius: var(--radius-md);
+}

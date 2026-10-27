@@ -1,0 +1,4 @@
+# Every text file is stored and checked out with LF, whatever the machine's
+# own convention: git then stops warning about line endings on Windows, and
+# a file edited on two machines diffs by what changed in it.
+* text=auto eol=lf

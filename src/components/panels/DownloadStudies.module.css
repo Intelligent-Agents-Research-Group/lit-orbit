@@ -1,0 +1,19 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+/* The dropdown is as wide as its longest format name and no wider, so the
+   button keeps the rest of the row. */
+.format {
+  flex: none;
+  width: 12ch;
+}
+
+/* Sized to sit level with the small button beside it; the right padding is the arrow's. */
+.format select {
+  font-size: var(--text-xs);
+  padding: 3px 22px 3px 5px;
+}

@@ -1,0 +1,28 @@
+/* Drawn to match Select.module.css: a text box and a dropdown sit side by
+   side in the same forms, so they share one border, one radius and one size. */
+.input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-md);
+  padding: 5px 7px;
+}
+
+.input::placeholder {
+  color: var(--color-text-faint);
+}
+
+.input:disabled {
+  opacity: var(--opacity-muted);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--color-danger);
+}
+
+textarea.input {
+  resize: vertical;
+}

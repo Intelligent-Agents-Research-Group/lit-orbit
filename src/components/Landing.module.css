@@ -1,0 +1,443 @@
+.screen {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background: radial-gradient(ellipse 70% 55% at 85% 0%, var(--color-accent-soft), transparent 70%), var(--color-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen {
+    scroll-behavior: auto;
+  }
+}
+
+/* Shared width of every band on the page. */
+.topbar,
+.hero,
+.features,
+.fit,
+.tutorial,
+.cta,
+.footer {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+/* ---- Top bar ----------------------------------------------------------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+
+.brandMark {
+  color: var(--color-accent);
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.navLink {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: var(--color-accent);
+}
+
+/* ---- Hero -------------------------------------------------------------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+  padding-block: var(--space-8) var(--space-9);
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.eyebrow,
+.sectionEyebrow {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.headline {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-semibold);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.lede {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 50ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  max-width: 56ch;
+}
+
+/* ---- Hero illustration -------------------------------------------------- */
+
+.heroOrbit {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  justify-self: center;
+}
+
+.halo {
+  fill: var(--color-surface);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.ring {
+  fill: none;
+  stroke: var(--orbit-ring-line);
+  stroke-width: 1;
+}
+
+.ringInner {
+  stroke: var(--orbit-ring-line-strong);
+}
+
+/* SVG transforms default to the view box, so this is the drawing's centre. */
+.spin {
+  transform-origin: 200px 200px;
+  animation: orbit linear infinite;
+}
+
+.spinInner {
+  animation-duration: var(--duration-orbit-inner);
+}
+
+.spinMiddle {
+  animation-duration: var(--duration-orbit-middle);
+  animation-direction: reverse;
+}
+
+.spinOuter {
+  animation-duration: var(--duration-orbit-outer);
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}
+
+.dot {
+  stroke: none;
+}
+
+.cat1 {
+  fill: var(--color-cat-1);
+}
+
+.cat2 {
+  fill: var(--color-cat-2);
+}
+
+.cat3 {
+  fill: var(--color-cat-3);
+}
+
+.cat4 {
+  fill: var(--color-cat-4);
+}
+
+.cat6 {
+  fill: var(--color-cat-6);
+}
+
+.cat7 {
+  fill: var(--color-cat-7);
+}
+
+/* A partial match, halfway up the orbit's ink scale, as the tutorial draws it. */
+.nearMiss {
+  opacity: var(--orbit-dot-near-miss-alpha);
+}
+
+.centre {
+  fill: var(--orbit-centre-fill);
+}
+
+.centreText {
+  fill: var(--orbit-centre-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+/* ---- Features ----------------------------------------------------------- */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.feature {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+}
+
+.featureTitle {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+
+.featureBody {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+/* ---- When to use it ----------------------------------------------------- */
+
+.fit {
+  padding-block: var(--space-9) 0;
+  /* Clears the page top when the "When to use it" link scrolls here. */
+  scroll-margin-top: var(--space-4);
+}
+
+.fitGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.fitCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+}
+
+.fitTitle {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+
+.fitList {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.fitPoint {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+}
+
+.fitPoint strong {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+/* ---- Tutorial ----------------------------------------------------------- */
+
+.tutorial {
+  padding-block: var(--space-9) 0;
+  /* Clears the page top when the "How it works" link scrolls here. */
+  scroll-margin-top: var(--space-4);
+}
+
+.sectionTitle {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  margin-top: var(--space-2);
+}
+
+.sectionLede {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  max-width: 62ch;
+}
+
+.tutorialCard {
+  margin-top: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-7);
+}
+
+/* ---- Closing call to action --------------------------------------------- */
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-top: var(--space-9);
+  /* A band inset from the page edge, so its padding is its own. */
+  width: min(1120px - var(--space-6) * 2, 100% - var(--space-6) * 2);
+  padding: var(--space-7);
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-lg);
+}
+
+.ctaTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+}
+
+.ctaBody {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  max-width: 56ch;
+}
+
+/* ---- Footer ------------------------------------------------------------- */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-block: var(--space-7) var(--space-8);
+}
+
+.privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  max-width: 90ch;
+}
+
+.privacyIcon {
+  color: var(--color-accent);
+  flex: none;
+  margin-top: 2px;
+}
+
+.privacy strong {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+.footerActions {
+  display: flex;
+}
+
+.confirm {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ---- Narrow windows ------------------------------------------------------ */
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding-block: var(--space-5) var(--space-8);
+  }
+
+  .heroOrbit {
+    max-width: 340px;
+  }
+
+  .features,
+  .fitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tutorialCard {
+    padding: var(--space-5);
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar,
+  .hero,
+  .features,
+  .fit,
+  .tutorial,
+  .footer {
+    padding-inline: var(--space-4);
+  }
+
+  .cta {
+    width: calc(100% - var(--space-4) * 2);
+    padding-inline: var(--space-5);
+  }
+
+  .headline {
+    font-size: var(--text-2xl);
+  }
+
+  .navLink {
+    display: none;
+  }
+}

@@ -1,0 +1,37 @@
+name: Check
+
+# Lint, test and build every push and every pull request. Unlike the deploy
+# workflows beside it this needs no Firebase project, so it runs in forks and
+# copies of the repository as well.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+# A newer push to the same branch makes the run for the older one moot.
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    # A pull request from a branch of this repository was already checked by
+    # its push; only one from a fork needs a run of its own.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # jsdom, which the App tests run in, needs 22.22 or later.
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm test
+      # Type-checks the app and its tests, and fails if a published site
+      # would lack a file it needs (see vite.config.ts).
+      - run: npm run build

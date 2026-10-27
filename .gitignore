@@ -1,0 +1,37 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Firebase
+.firebase
+
+# Locally installed agent skills
+.claude/skills/
+.agents/skills/
+skills-lock.json
+
+# Batches that are not ours to publish stay on this machine, wherever they
+# sit - see src/data/reconciled.ts
+/private/
+Reconciled Final Results*.xlsx

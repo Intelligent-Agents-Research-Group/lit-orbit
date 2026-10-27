@@ -1,0 +1,37 @@
+/*
+ * A <dialog> opened with `showModal` arrives with browser styles of its own -
+ * a border, padding and a centring margin - so they are replaced here rather
+ * than added to. It scrolls inside itself when the window is shorter than it.
+ */
+.dialog {
+  width: min(420px, calc(100vw - var(--space-6)));
+  max-height: calc(100vh - var(--space-6));
+  overflow-y: auto;
+  margin: auto;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.wide {
+  width: min(560px, calc(100vw - var(--space-6)));
+}
+
+.dialog::backdrop {
+  background: var(--color-scrim);
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}

@@ -1,0 +1,45 @@
+.scroller {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+
+.head {
+  text-align: left;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+}
+
+.cell {
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--color-border-soft);
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* A cell holding several values, so a split rule is visible at a glance. */
+.many {
+  color: var(--color-accent);
+}
+
+.empty {
+  color: var(--color-text-faint);
+}
+
+/* The column whose rule is in hand. After .head and .cell, so it wins their background. */
+.highlight {
+  background: var(--color-accent-soft);
+}

@@ -1,0 +1,118 @@
+/* The header row of a setting is aligned on the baseline, so both controls
+   centre themselves against the text rather than sitting on it. */
+.clear {
+  align-self: center;
+  background: none;
+  border: 0;
+  padding: 0 var(--space-1);
+  color: var(--color-accent);
+  font-size: var(--text-xs);
+  line-height: 1;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  background: none;
+  border: 0;
+  padding: 0 var(--space-1);
+  color: var(--color-text-faint);
+  line-height: 1;
+}
+
+.remove:hover {
+  color: var(--color-danger);
+}
+
+.empty {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+}
+
+/* ---- "Add a filter" button and its dropdown ------------------------------ */
+.add {
+  position: relative;
+}
+
+.addButton {
+  width: 100%;
+  justify-content: center;
+  border-style: dashed;
+  color: var(--color-text-muted);
+}
+
+.addIcon {
+  font-size: var(--text-base);
+  line-height: 1;
+}
+
+.menu {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  right: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.menuItem {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 5px var(--space-2);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-text);
+  font-size: var(--text-md);
+  text-align: left;
+}
+
+.menuItem:hover,
+.menuItem:focus-visible {
+  background: var(--color-hover);
+}
+
+.menuLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menuCount {
+  flex: none;
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.filter {
+  margin-bottom: var(--space-3);
+}
+
+.filterHeader {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-1);
+}
+
+.chosen {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}

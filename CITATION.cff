@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use Lit Orbit in your research, please cite it as below."
+title: "Lit Orbit"
+abstract: >-
+  An orbit view of a literature batch: evidence tiers as rings, a column of
+  your choice as wedges, and every study drawn bolder the more of your course
+  it shares. A batch set up in it can be published as a website
+  of its own.
+type: software
+authors:
+  - family-names: Liu
+    given-names: Jingwen
+repository-code: "https://github.com/shoujyo/lit-orbit"
+license: MIT

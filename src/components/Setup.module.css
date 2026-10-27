@@ -1,0 +1,291 @@
+.screen {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background: var(--color-bg);
+}
+
+/* ---- Top bar: where you are ------------------------------------------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.stepGap {
+  width: var(--space-7);
+  height: 1px;
+  background: var(--color-border);
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 0;
+  background: transparent;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-md);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+}
+
+.step:hover:not(:disabled) {
+  background: var(--color-hover);
+}
+
+.step:disabled {
+  opacity: var(--opacity-muted);
+  cursor: not-allowed;
+}
+
+.stepNumber {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+}
+
+.stepCurrent {
+  color: var(--color-text);
+}
+
+.stepCurrent .stepNumber {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+}
+
+/* ---- Page body ---------------------------------------------------------- */
+
+.body {
+  overflow-y: auto;
+  width: 100%;
+  padding: var(--space-6) max(var(--space-5), calc((100% - 1100px) / 2)) var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* The later pages carry a preview beside their settings, so they use the width. */
+.bodyWide {
+  padding-inline: var(--space-5);
+}
+
+.title {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+}
+
+.lede {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  max-width: 64ch;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4) var(--space-5);
+  min-width: 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+/* The one box on the page that is an answer in its own right, so it is set a size larger than a form control. */
+.courseName {
+  font-size: var(--text-base);
+  padding: 7px 9px;
+}
+
+.fileName {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileMeta {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.fileMeta + .fileMeta {
+  margin-top: var(--space-2);
+}
+
+.upload {
+  margin-top: var(--space-3);
+}
+
+/* Two small controls, so they keep a column's width instead of the page's. */
+.readingFields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.readingFields > * {
+  width: min(300px, 100%);
+}
+
+/* What a file should look like, under the button that loads one. */
+.guideTitle {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+}
+
+.guide {
+  margin: var(--space-1) 0 var(--space-3);
+  padding-left: 1.2em;
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.guide strong {
+  color: var(--color-text);
+  font-weight: var(--weight-medium);
+}
+
+/* ---- Pages 2 and 3: settings beside a live preview ----------------------- */
+
+.sideLayout {
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+  flex: 1;
+}
+
+.sideSettings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* The height left under the top bar and over the bottom bar, less the page's own padding. */
+.sideLayout {
+  --preview-height: calc(100vh - var(--layout-header-height) * 2 - var(--space-6) - var(--space-7));
+}
+
+/* Stays in view while the settings beside it scroll. */
+.sidePreview,
+.orbitPreview {
+  position: sticky;
+  top: 0;
+}
+
+/* The table and the values under it scroll inside the card rather than pushing it off the page. */
+.previewCard {
+  max-height: var(--preview-height);
+  overflow: auto;
+}
+
+.orbitPreview {
+  display: grid;
+  height: var(--preview-height);
+  min-height: 420px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ---- Bottom bar: back and next ----------------------------------------- */
+
+.bottombar {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.bottomInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) max(var(--space-5), calc((100% - 1100px) / 2));
+}
+
+.bottomNote {
+  flex: 1;
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .sideLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidePreview,
+  .orbitPreview {
+    position: static;
+  }
+
+  .previewCard {
+    max-height: none;
+  }
+
+  .orbitPreview {
+    height: 70vh;
+  }
+
+  .bottomNote {
+    display: none;
+  }
+
+  .bottomInner {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand {
+    display: none;
+  }
+
+  .stepGap {
+    width: var(--space-3);
+  }
+}

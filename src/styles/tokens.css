@@ -1,0 +1,213 @@
+/* ==========================================================================
+   Design tokens - the single source of truth for the visual style.
+
+   Three layers:
+     1. --palette-*  raw colours. Every literal colour in the app lives here.
+     2. --color-* / --orbit-*  semantic aliases used by components and by the
+        canvas renderer (src/lib/theme.ts reads them with getComputedStyle).
+     3. sizes, fonts, spacing and motion, shared by both palettes.
+
+   Light is the default; the dark palette at the bottom of this file only
+   re-declares layer 1, so a token added to layer 2 is themed automatically.
+   `data-theme` on <html> selects between them (see src/lib/appearance.ts).
+
+   Rule of thumb: components never hard-code a colour, size or font; they
+   only reference a token from this file.
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  /* ---- Palette ---------------------------------------------------------- */
+  --palette-paper: #f4f2ec;
+  --palette-panel: #ffffff;
+  --palette-panel-soft: #faf8f3;
+  --palette-ink: #1d2430;
+  --palette-ink-muted: #66707f;
+  --palette-ink-faint: #9aa3ae;
+  --palette-line: #e1dcd2;
+  --palette-line-soft: #edeae2;
+  --palette-hover: #f0ede6;
+  --palette-accent: #3f4e9e;
+  --palette-accent-soft: #e6e8f6;
+  --palette-accent-ink: #ffffff;
+  --palette-danger: #b23a2f;
+  --palette-notice-ink: #7a5310;
+  --palette-notice-bg: #f7ead0;
+  --palette-notice-line: #e3cc9c;
+  --palette-tooltip-bg: #1d2430;
+  --palette-tooltip-ink: #f4f2ec;
+  --palette-shadow-soft: rgba(29, 36, 48, 0.08);
+  --palette-scrim: rgba(29, 36, 48, 0.4);
+  --palette-shadow-strong: rgba(29, 36, 48, 0.14);
+
+  /* Categorical palette - handed out in order to the values of the "colour by" column */
+  --palette-cat-1: #0f8b6c;
+  --palette-cat-2: #d2582a;
+  --palette-cat-3: #4c78a8;
+  --palette-cat-4: #c9a227;
+  --palette-cat-5: #8a94a0;
+  --palette-cat-6: #b5407b;
+  --palette-cat-7: #5c9e3c;
+  --palette-cat-8: #7b5ea7;
+  --palette-cat-overflow: #b8bec6;
+
+  /* Orbit ink: translucent, so the rings and wedges sit on the background */
+  --palette-ring-line: rgba(29, 36, 48, 0.14);
+  --palette-ring-line-strong: rgba(63, 78, 158, 0.5);
+  --palette-ring-label: rgba(102, 112, 127, 0.95);
+  --palette-wedge-line: rgba(29, 36, 48, 0.07);
+  --palette-wedge-label: rgba(29, 36, 48, 0.78);
+  --palette-dot-halo: rgba(63, 78, 158, 0.28);
+  /* A study that misses one setting of the course; ones that miss more are hidden */
+  --palette-dot-near-miss-alpha: 0.5;
+  /* Hovered dots glow in their own colour: blur radius in px, and its strength */
+  --palette-dot-glow-blur: 9;
+  --palette-dot-glow-alpha: 1;
+
+  /* ---- Semantic colours ------------------------------------------------- */
+  --color-bg: var(--palette-paper);
+  --color-surface: var(--palette-panel);
+  --color-surface-soft: var(--palette-panel-soft);
+  --color-text: var(--palette-ink);
+  --color-text-muted: var(--palette-ink-muted);
+  --color-text-faint: var(--palette-ink-faint);
+  --color-border: var(--palette-line);
+  --color-border-soft: var(--palette-line-soft);
+  --color-hover: var(--palette-hover);
+  --color-accent: var(--palette-accent);
+  --color-accent-soft: var(--palette-accent-soft);
+  --color-on-accent: var(--palette-accent-ink);
+  --color-danger: var(--palette-danger);
+  --color-notice-text: var(--palette-notice-ink);
+  --color-notice-bg: var(--palette-notice-bg);
+  --color-notice-border: var(--palette-notice-line);
+  --color-tooltip-bg: var(--palette-tooltip-bg);
+  --color-tooltip-text: var(--palette-tooltip-ink);
+  --color-focus-ring: var(--palette-accent);
+  /* Dims the page behind a modal dialog */
+  --color-scrim: var(--palette-scrim);
+
+  --color-cat-1: var(--palette-cat-1);
+  --color-cat-2: var(--palette-cat-2);
+  --color-cat-3: var(--palette-cat-3);
+  --color-cat-4: var(--palette-cat-4);
+  --color-cat-5: var(--palette-cat-5);
+  --color-cat-6: var(--palette-cat-6);
+  --color-cat-7: var(--palette-cat-7);
+  --color-cat-8: var(--palette-cat-8);
+  --color-cat-overflow: var(--palette-cat-overflow);
+
+  /* ---- Orbit canvas ----------------------------------------------------- */
+  --orbit-bg: var(--color-bg);
+  --orbit-ring-line: var(--palette-ring-line);
+  --orbit-ring-line-strong: var(--palette-ring-line-strong);
+  --orbit-ring-label: var(--palette-ring-label);
+  --orbit-wedge-line: var(--palette-wedge-line);
+  --orbit-wedge-label: var(--palette-wedge-label);
+  --orbit-centre-fill: var(--color-accent);
+  --orbit-centre-text: var(--color-on-accent);
+  --orbit-dot-outline: var(--color-text);
+  --orbit-dot-halo: var(--palette-dot-halo);
+  --orbit-dot-near-miss-alpha: var(--palette-dot-near-miss-alpha);
+  --orbit-dot-glow-blur: var(--palette-dot-glow-blur);
+  --orbit-dot-glow-alpha: var(--palette-dot-glow-alpha);
+
+  /* ---- Typography ------------------------------------------------------- */
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-md: 13px;
+  --text-base: 14px;
+  --text-lg: 17px;
+  --text-xl: 21px;
+  --text-2xl: 27px;
+  /* Only the landing page's headline is set this large */
+  --text-3xl: 42px;
+  --leading: 1.45;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* ---- Spacing / shape -------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 72px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px var(--palette-shadow-soft);
+  --shadow-md: 0 6px 18px var(--palette-shadow-strong);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --layout-header-height: 52px;
+  --layout-rail-width: 272px;
+  --layout-detail-width: 380px;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --duration-fast: 100ms;
+  --duration-base: 180ms;
+  /* One full turn of each ring in the landing page's illustration, inner first */
+  --duration-orbit-inner: 70s;
+  --duration-orbit-middle: 110s;
+  --duration-orbit-outer: 160s;
+  --opacity-muted: 0.45;
+}
+
+/* ==========================================================================
+   Dark palette. Only layer 1 is re-declared: same roles, darker paper.
+   Categorical colours are lifted and slightly desaturated so the dots keep
+   their identity against a dark background without glowing.
+   ========================================================================== */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --palette-paper: #10141b;
+  --palette-panel: #171c25;
+  --palette-panel-soft: #1c222d;
+  --palette-ink: #e7eaf0;
+  --palette-ink-muted: #a0aab8;
+  --palette-ink-faint: #6e7889;
+  --palette-line: #2c3442;
+  --palette-line-soft: #232a36;
+  --palette-hover: #232b38;
+  --palette-accent: #8fa0f0;
+  --palette-accent-soft: #232a45;
+  --palette-accent-ink: #0d111a;
+  --palette-danger: #ef8a7c;
+  --palette-notice-ink: #e9c98c;
+  --palette-notice-bg: #2e2617;
+  --palette-notice-line: #4b3d21;
+  --palette-tooltip-bg: #2a3341;
+  --palette-tooltip-ink: #e7eaf0;
+  --palette-shadow-soft: rgba(0, 0, 0, 0.45);
+  --palette-scrim: rgba(0, 0, 0, 0.6);
+  --palette-shadow-strong: rgba(0, 0, 0, 0.55);
+
+  --palette-cat-1: #2ec49b;
+  --palette-cat-2: #f08a56;
+  --palette-cat-3: #7fb0e6;
+  --palette-cat-4: #e2c25f;
+  --palette-cat-5: #aab4c2;
+  --palette-cat-6: #e878ae;
+  --palette-cat-7: #8ed36b;
+  --palette-cat-8: #b19ce8;
+  --palette-cat-overflow: #5c6675;
+
+  --palette-ring-line: rgba(231, 234, 240, 0.13);
+  --palette-ring-line-strong: rgba(143, 160, 240, 0.55);
+  --palette-ring-label: rgba(160, 170, 184, 0.95);
+  --palette-wedge-line: rgba(231, 234, 240, 0.07);
+  --palette-wedge-label: rgba(231, 234, 240, 0.75);
+  --palette-dot-halo: rgba(143, 160, 240, 0.34);
+  /* Glow carries further on a dark background before it washes out */
+  --palette-dot-glow-blur: 13;
+  --palette-dot-glow-alpha: 1;
+}
