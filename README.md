@@ -28,7 +28,9 @@ Other scripts: `npm run build` (type-check + production build into `dist/`),
 `src/App.test.tsx`, which renders the whole app in jsdom: which screen comes
 up, and what it makes of what the browser kept and what the address names.
 GitHub Actions lints, tests and builds every push and pull request
-(`.github/workflows/check.yml`), forks included.
+(`.github/workflows/check.yml`), forks included. A push to `main` is also
+built and put up on GitHub Pages (`.github/workflows/pages.yml`), at
+<https://intelligent-agents-research-group.github.io/lit-orbit/>.
 
 Publishing a site copies the built app. `npm run preview` and the deployed app
 copy the build they serve; `npm run dev` has none, so publishing from it builds
@@ -421,7 +423,8 @@ How the pieces fit:
   published site and reads its `site.json`; without it, the page is this app
   and reads the example.
 - `base: './'` makes every path relative, so the same files work at the root of
-  a host and under `/<repository>/`, where GitHub Pages serves a project site.
+  a host and under `/<repository>/`, where GitHub Pages serves a project site -
+  this app and every site published from it alike.
 - Every site one GitHub account publishes is served from one host,
   `<account>.github.io`, and a browser gives a host one storage. A published
   site stores under the name of its own folder, so the course a reader sets on

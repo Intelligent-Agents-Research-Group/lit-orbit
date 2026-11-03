@@ -1,7 +1,7 @@
 name: Check
 
 # Lint, test and build every push and every pull request. Unlike the deploy
-# workflows beside it this needs no Firebase project, so it runs in forks and
+# workflow beside it this needs no GitHub Pages site, so it runs in forks and
 # copies of the repository as well.
 on:
   push:

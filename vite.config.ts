@@ -13,9 +13,9 @@ import {
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Relative, so the built app runs from whatever folder serves it: the root
-  // of our own host, and `/<repository>/` on GitHub Pages, where every site
-  // published from it lives.
+  // Relative, so the built app runs from whatever folder serves it:
+  // `/<repository>/` on GitHub Pages, where this app and every site published
+  // from it live, or the root of any other host.
   base: './',
   build: {
     // The libraries in the bundle come with licences, and those travel with

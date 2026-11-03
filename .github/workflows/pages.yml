@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+# Build the app and put dist/ up as the repository's GitHub Pages site on
+# every push to main. Pages has to be set to deploy from GitHub Actions
+# (Settings > Pages > Source); the first run tries to set that itself.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time, and a push during one lets it finish: a deploy
+# stopped half-way could leave the site between two versions.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Only the original repository deploys: a fork or a copy has a Pages site
+    # of its own to set up, and until it does every push to it would end in a
+    # failed run. Put the copy's name here to deploy it.
+    if: github.repository == 'Intelligent-Agents-Research-Group/lit-orbit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

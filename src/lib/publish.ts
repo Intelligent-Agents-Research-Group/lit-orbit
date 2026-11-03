@@ -76,8 +76,8 @@ export async function downloadSite(config: SiteConfig, studioUrl: string): Promi
       // the same deploy as the list: an index.html from an older one would
       // name assets the list does not have.
       const response = await fetch(base + path.split('/').map(encodeURIComponent).join('/'), { cache: 'no-cache' });
-      // A host that rewrites every path to index.html - ours does - answers a
-      // missing file with the page instead of a 404.
+      // A host that rewrites every path to index.html answers a missing file
+      // with the page instead of a 404.
       const page = !path.endsWith('.html') && response.headers.get('content-type')?.includes('text/html');
       if (!response.ok || page) throw new Error(`${path} could not be fetched from this server.`);
       appFiles.set(path, new Uint8Array(await response.arrayBuffer()));

@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "preview", "--", "--port", "4173", "--strictPort"],
       "port": 4173
+    },
+    {
+      "name": "lit-orbit-pages",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--base", "/lit-orbit/", "--port", "4174", "--strictPort"],
+      "port": 4174
     }
   ]
 }
